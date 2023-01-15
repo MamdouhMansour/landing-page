@@ -25,6 +25,7 @@
 let navBarMenu = document.getElementById("navbar");
 const burgerIcon = document.getElementById("icon");
 const navBarList = document.querySelector("#navbar__list");
+const navigationBarElement = document.getElementById('navbar__list');
 const pageSections = [...document.querySelectorAll("section")];
 const sectionTagname = "section";
 const activeClassName = "your-active-class";
@@ -55,13 +56,12 @@ function hideNavBar() {
 }
 
 //Toggle/Untoggle menu bar
-function toggleMenu() {
-    let navigationBar = document.getElementById('navbar__list');
-    if (navigationBar.style.display === "block") {
-        navigationBar.style.display = "none";
-    } else {
-        navigationBar.style.display = "block";
-    }
+function expandMenu() {
+    navigationBarElement.style.display = "block";
+}
+
+function collapseMenu(){
+    navigationBarElement.style.display = "none";
 }
 /**
  * End Helper Functions
@@ -75,7 +75,6 @@ function createMenuList() {
         let menuItem = document.createElement("li");
         menuItem.innerHTML = (`<a href = "#${section.id}" data-nav = "${section.id}" class = "menu__link">${section.getAttribute('data-nav')}</a>`);
         fragment.appendChild(menuItem);
-
     }
     navBarList.appendChild(fragment);
 }
@@ -117,8 +116,6 @@ window.addEventListener('scroll', function (event) {
     }, 2500);
 });
 
-// Toggle burger icon
-burgerIcon.addEventListener('click', toggleMenu);
-
-
-/* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
+// Toggle burger icon when mouse over, and collapse when mouse leave of links list
+burgerIcon.addEventListener('mouseover', expandMenu);
+navigationBarElement.addEventListener('mouseleave', collapseMenu);
