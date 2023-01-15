@@ -22,7 +22,13 @@
  * Define Global Variables
  * 
 */
-
+let navBarMenu = document.getElementById("navbar");
+const burgerIcon = document.getElementById("icon");
+const navBarList = document.querySelector("#navbar__list");
+const pageSections = [...document.querySelectorAll("section")];
+const sectionTagname = "section";
+const activeClassName = "your-active-class";
+let fragment = document.createDocumentFragment();
 
 /**
  * End Global Variables
@@ -30,33 +36,89 @@
  * 
 */
 
+// scrollIntoView with smooth behavior
+function smoothScrollToClickedSection(section) {
+    section.preventDefault();
+    if (section.target.href) {
+        document.getElementById(`${section.target.dataset.nav}`).scrollIntoView({ behavior: "smooth" });
+    }
+}
 
+//Show navigation menu
+function showNavBar() {
+    navBarMenu.style.display = "";
+}
 
+//Hide navigation menu
+function hideNavBar() {
+    navBarMenu.style.display = "none";
+}
+
+//Toggle/Untoggle menu bar
+function toggleMenu() {
+    let navigationBar = document.getElementById('navbar__list');
+    if (navigationBar.style.display === "block") {
+        navigationBar.style.display = "none";
+    } else {
+        navigationBar.style.display = "block";
+    }
+}
 /**
  * End Helper Functions
  * Begin Main Functions
- * 
+ *
 */
 
 // build the nav
+function createMenuList() {
+    for (let section of pageSections) {
+        let menuItem = document.createElement("li");
+        menuItem.innerHTML = (`<a href = "#${section.id}" data-nav = "${section.id}" class = "menu__link">${section.getAttribute('data-nav')}</a>`);
+        fragment.appendChild(menuItem);
 
-
-// Add class 'active' to section when near top of viewport
-
-
-// Scroll to anchor ID using scrollTO event
-
+    }
+    navBarList.appendChild(fragment);
+}
 
 /**
  * End Main Functions
  * Begin Events
- * 
+ *
 */
+// Scroll to anchor ID using scrollTO event
+navBarList.addEventListener('click', smoothScrollToClickedSection);
 
-// Build menu 
+// Create & Scroll to section on link click
+createMenuList();
 
-// Scroll to section on link click
+// Add class 'active' to section when near top of viewport
+window.onscroll = function () {
+    document.querySelectorAll(sectionTagname).forEach(function (active) {
+        let sectionDim = active.getBoundingClientRect();
+        if (sectionDim.top >= 0 &&
+            sectionDim.top < 300) {
+            active.classList.add(activeClassName);
+        } else {
+            active.classList.remove(activeClassName);
 
-// Set sections as active
+        }
+    });
+};
+
+//Hide navigation bar when stop scrolling
+var isScrolling;
+window.addEventListener('scroll', function (event) {
+    if (isScrolling != 'undefined') {
+        window.clearTimeout(isScrolling);
+    }
+    showNavBar();
+    isScrolling = setTimeout(() => {
+        hideNavBar();
+    }, 2500);
+});
+
+// Toggle burger icon
+burgerIcon.addEventListener('click', toggleMenu);
 
 
+/* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
