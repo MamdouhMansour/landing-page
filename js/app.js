@@ -1,22 +1,8 @@
 /**
- * 
- * Manipulating the DOM exercise.
- * Exercise programmatically builds navigation,
- * scrolls to anchors from navigation,
- * and highlights section in viewport upon scrolling.
- * 
- * Dependencies: None
- * 
- * JS Version: ES2015/ES6
- * 
- * JS Standard: ESlint
- * 
-*/
+ * I have completed my project by searching for ideas that shared on the community and on stackoverflow.
+ * Then I have tweeked some of these code
+ */
 
-/**
- * Comments should be present at the beginning of each procedure and class.
- * Great to have comments before crucial code sections within the procedure.
-*/
 
 /**
  * Define Global Variables
