@@ -30,7 +30,6 @@ const pageSections = [...document.querySelectorAll("section")];
 const sectionTagname = "section";
 const activeClassName = "your-active-class";
 let fragment = document.createDocumentFragment();
-
 /**
  * End Global Variables
  * Start Helper Functions
@@ -57,8 +56,7 @@ function hideNavBar() {
 
 //Toggle/Untoggle menu bar
 function expandMenu() {
-    navigationBarElement.style.display = "block";
-}
+    navigationBarElement.style.display = "";}
 
 function collapseMenu(){
     navigationBarElement.style.display = "none";
@@ -73,7 +71,7 @@ function collapseMenu(){
 function createMenuList() {
     for (let section of pageSections) {
         let menuItem = document.createElement("li");
-        menuItem.innerHTML = (`<a href = "#${section.id}" data-nav = "${section.id}" class = "menu__link">${section.getAttribute('data-nav')}</a>`);
+        menuItem.innerHTML = (`<a href = "${section.id}" data-nav = "${section.id}" class = "menu__link">${section.getAttribute('data-nav')}</a>`);
         fragment.appendChild(menuItem);
     }
     navBarList.appendChild(fragment);
@@ -113,7 +111,7 @@ window.addEventListener('scroll', function (event) {
     showNavBar();
     isScrolling = setTimeout(() => {
         hideNavBar();
-    }, 2500);
+    }, 3500);
 });
 
 // Toggle burger icon when mouse over, and collapse when mouse leave of links list

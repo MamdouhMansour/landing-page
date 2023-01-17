@@ -1,14 +1,18 @@
-# Landing Page Project
+## Udacity Landing Page UI
 
-## Table of Contents
+#### *Description*
 
-* [Instructions](#instructions)
+- This is the landing page example having HTML, CSS, and JS code
+- It represent GUI of web page sections with navigation menu
+- The navigation menu includes dynamic redirection to the section clicked
 
-## Instructions
+#### *Launch*
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+- Using the configuration in launch.json file it can be launched using command [start index.html]
 
-To get started, open `js/app.js` and start building out the app's functionality
+#### *Documentation*
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
-# landing-page
+- Comments are included in the 3 main files styles.css, index.html, app.js explain the code below
+
+
+
