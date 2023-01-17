@@ -1,4 +1,4 @@
-## Udacity Landing Page UI
+## Landing Page UI
 
 #### *Description*
 
