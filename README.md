@@ -6,13 +6,27 @@
 - It represent GUI of web page sections with navigation menu
 - The navigation menu includes dynamic redirection to the section clicked
 
-#### *Launch*
+#### *Run Project*
 
 - Using the configuration in launch.json file it can be launched using command [start index.html]
 
 #### *Documentation*
 
 - Comments are included in the 3 main files styles.css, index.html, app.js explain the code below
+
+#### *Technologies*
+
+- In this project JS version is ES6
+
+#### *Credits*
+
+- Goes to Udacity platform the Professional Web Development Nano Degress Course.
+
+#### *Author*
+
+- Fully created by @MamdouhMansour
+
+
 
 
 
