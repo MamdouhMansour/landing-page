@@ -18,18 +18,9 @@
   <!-- HTML Follows BEM naming conventions 
   IDs are only used for sections to connect menu achors to sections -->
   <header class="page__header">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <!-- Top Navigation Menu -->
-    <nav class="topnav" id = "navbar">
-      <a href="#home" class="active">Menu</a>
-      <!-- Navigation links (hidden by default) -->
-      <ul id="navbar__list" style="display: none;">
-      </ul>
-      <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
-      <a href="javascript:void(0);" id = "icon" class="icon">
-        <i class="fa fa-bars"></i>
-      </a>
+    <nav class="navbar__menu">
+      <!-- Navigation starts as empty UL that will be populated with JS -->
+      <ul id="navbar__list"></ul>
     </nav>
   </header>
   <main>

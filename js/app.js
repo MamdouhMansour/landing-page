@@ -1,15 +1,4 @@
-/**
- * I have completed my project by searching for ideas that shared on the community and on stackoverflow.
- * Then I have tweeked some of these code
- */
-
-
-/**
- * Define Global Variables
- * 
-*/
-let navBarMenu = document.getElementById("navbar");
-const burgerIcon = document.getElementById("icon");
+// Define Global Variables
 const navBarList = document.querySelector("#navbar__list");
 const navigationBarElement = document.getElementById('navbar__list');
 const pageSections = [...document.querySelectorAll("section")];
@@ -22,7 +11,7 @@ let fragment = document.createDocumentFragment();
  * 
 */
 
-// scrollIntoView with smooth behavior
+// ScrollIntoView with smooth behavior
 function smoothScrollToClickedSection(section) {
     section.preventDefault();
     if (section.target.href) {
@@ -30,21 +19,13 @@ function smoothScrollToClickedSection(section) {
     }
 }
 
-//Show navigation menu
+// Show navigation menu
 function showNavBar() {
-    navBarMenu.style.display = "";
+    navigationBarElement.style.display = "";
 }
 
-//Hide navigation menu
+// Hide navigation menu
 function hideNavBar() {
-    navBarMenu.style.display = "none";
-}
-
-//Toggle/Untoggle menu bar
-function expandMenu() {
-    navigationBarElement.style.display = "";}
-
-function collapseMenu(){
     navigationBarElement.style.display = "none";
 }
 /**
@@ -53,11 +34,11 @@ function collapseMenu(){
  *
 */
 
-// build the nav
+// build the nav, set id to use in highlighting while scroll
 function createMenuList() {
     for (let section of pageSections) {
         let menuItem = document.createElement("li");
-        menuItem.innerHTML = (`<a href = "${section.id}" data-nav = "${section.id}" class = "menu__link">${section.getAttribute('data-nav')}</a>`);
+        menuItem.innerHTML = (`<a href = "${section.id}" data-nav = "${section.id}" class = "menu__link" id = "nav-${section.id}">${section.getAttribute('data-nav')}</a>`);
         fragment.appendChild(menuItem);
     }
     navBarList.appendChild(fragment);
@@ -77,19 +58,22 @@ createMenuList();
 // Add class 'active' to section when near top of viewport
 window.onscroll = function () {
     document.querySelectorAll(sectionTagname).forEach(function (active) {
+        let navItemId = "nav-";
         let sectionDim = active.getBoundingClientRect();
-        if (sectionDim.top >= 0 &&
-            sectionDim.top < 300) {
+        if (sectionDim.top >= 0 && sectionDim.top < 350) {
+            navItemId = navItemId + active.getAttribute('id');
             active.classList.add(activeClassName);
+            document.getElementById(navItemId).style.color = "white";
         } else {
+            navItemId = navItemId + active.getAttribute('id');
             active.classList.remove(activeClassName);
-
+            document.getElementById(navItemId).removeAttribute("style");
         }
     });
 };
 
-//Hide navigation bar when stop scrolling
-var isScrolling;
+// Hide navigation bar when stop scrolling
+let isScrolling;
 window.addEventListener('scroll', function (event) {
     if (isScrolling != 'undefined') {
         window.clearTimeout(isScrolling);
@@ -97,9 +81,5 @@ window.addEventListener('scroll', function (event) {
     showNavBar();
     isScrolling = setTimeout(() => {
         hideNavBar();
-    }, 3500);
+    }, 2000);
 });
-
-// Toggle burger icon when mouse over, and collapse when mouse leave of links list
-burgerIcon.addEventListener('mouseover', expandMenu);
-navigationBarElement.addEventListener('mouseleave', collapseMenu);
