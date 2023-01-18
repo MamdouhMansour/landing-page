@@ -25,7 +25,7 @@
 
 #### *Author*
 
-- Fully created by @MamdouhMansour
+- Forked from https://github.com/udacity/cd0428-landing-page/ & Edited by @MamdouhMansour
 
 
 
