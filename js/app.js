@@ -81,5 +81,5 @@ window.addEventListener('scroll', function (event) {
     showNavBar();
     isScrolling = setTimeout(() => {
         hideNavBar();
-    }, 2000);
+    }, 5000);
 });
